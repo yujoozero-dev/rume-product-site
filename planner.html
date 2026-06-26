@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RUME — Floor Planner</title>
+<meta name="description" content="RUME bedroom floor planner — arrange furniture and place mushroom lighting in a 3.6m × 3.6m room." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="rume home"><img src="assets/logo-red.png" alt="rume" /></a>
+    <nav class="nav-center">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#collection">Collection</a>
+      <a href="product.html">Shop</a>
+      <a href="planner.html" class="active">Planner</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact">info</a>
+      <a href="product.html">Sign in</a>
+      <button class="cart-link" data-cart-open>Cart (<b data-cart-count>0</b>)</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== PLANNER ===================== -->
+<main class="planner">
+  <div class="planner-head reveal">
+    <div class="pe">Floor Planner</div>
+    <h1>3.6m × 3.6m 침실 평면도 <span class="dim">(건축 도면 규격)</span></h1>
+    <div class="sub">Arrange the furniture and place RUME mushroom lighting to compose your room.</div>
+  </div>
+
+  <div class="planner-tools reveal d1">
+    <button class="tool" id="btn-furniture">가구 재배치<small>Arrange furniture</small></button>
+    <button class="tool" id="btn-light">조명 배치<small>Place light</small></button>
+    <button class="tool" id="btn-shuffle">Shuffle<small>Mood variation</small></button>
+    <button class="tool buy" id="btn-buy">구매하기<small>Buy this setup</small></button>
+  </div>
+
+  <div class="planner-stage reveal d2">
+    <div class="board">
+      <svg id="floorplan" viewBox="0 0 700 700" role="img" aria-label="3.6 by 3.6 metre bedroom floor plan">
+        <defs>
+          <pattern id="wall-hatch" width="9" height="9" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="9" stroke="#3a1c10" stroke-width=".8" />
+          </pattern>
+          <radialGradient id="lightZone" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFE9C0" stop-opacity=".95" />
+            <stop offset="42%" stop-color="#FFD89A" stop-opacity=".48" />
+            <stop offset="100%" stop-color="#FFD89A" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <g id="structure-layer"></g>
+        <g id="furniture-layer"></g>
+        <g id="light-layer"></g>
+      </svg>
+    </div>
+
+    <aside class="legend">
+      <h2>도면 범례 (Legend)</h2>
+      <div class="legend-item">
+        <span class="legend-icon"><svg width="42" height="12"><rect width="42" height="12" fill="url(#wall-hatch)" stroke="#3a1c10" stroke-width=".8"/></svg></span>
+        콘크리트 외벽 (두께 15cm)
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon"><svg width="42" height="30"><line x1="36" y1="4" x2="36" y2="28" stroke="#3a1c10" stroke-width="1.4"/><line x1="36" y1="4" x2="12" y2="4" stroke="#3a1c10" stroke-width="1.4"/><path d="M36 28 A24 24 0 0 0 12 4" fill="none" stroke="#3a1c10" stroke-width=".8" stroke-dasharray="2,2"/></svg></span>
+        여닫이문 (반경내 배치금지)
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon"><svg width="42" height="14"><rect x="0" y="2" width="42" height="10" fill="#fff" stroke="#3a1c10" stroke-width=".8"/><line x1="0" y1="7" x2="42" y2="7" stroke="#3a1c10" stroke-width=".8"/></svg></span>
+        미닫이 2연동 창문
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon"><svg width="42" height="30"><rect x="6" y="2" width="30" height="26" fill="#fff" stroke="#3a1c10" stroke-width=".8"/><circle cx="14" cy="8" r="3" fill="none" stroke="#3a1c10" stroke-width=".8"/><circle cx="28" cy="8" r="3" fill="none" stroke="#3a1c10" stroke-width=".8"/></svg></span>
+        더블 침대 (Double Bed)
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon"><svg width="30" height="30"><rect x="5" y="5" width="20" height="20" fill="#fff" stroke="#3a1c10" stroke-width=".8"/></svg></span>
+        침대 협탁 (Side Table)
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon"><svg width="42" height="20"><rect x="3" y="4" width="36" height="12" fill="#fff" stroke="#3a1c10" stroke-width=".8"/></svg></span>
+        TV 테이블 &amp; 80" TV
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon"><svg width="30" height="30"><circle cx="15" cy="15" r="12" fill="url(#lightZone)"/><circle cx="15" cy="15" r="4" fill="#FFE9C0" stroke="#3a1c10" stroke-width=".6"/></svg></span>
+        발광버섯 조명 (군락 형성)
+      </div>
+      <div class="dimrow">
+        Room: 3.6 m × 3.6 m · 12.96 ㎡<br>
+        Scale 1 : ~46 · architectural draft<br>
+        Lighting: Rume - L (cluster of 발광버섯)
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- ===================== FOOTER / CONTACT ===================== -->
+<footer class="site-footer" id="contact">
+  <div class="footer-mark"><img src="assets/logo-brown.png" alt="rume" /></div>
+  <div class="footer-grid">
+    <div class="col"><h4>rume</h4></div>
+    <div class="col"><a href="#">INSTAGRAM</a></div>
+    <div class="col">
+      <a href="#">About</a>
+      <a href="#">Membership</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="col right">
+      <p>Designed by JY · NH · HJ · YJ · DY</p>
+      <p>Business no 492 - 22 - 82191</p>
+      <p>Email: rume@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>©2026 KDM+ V1.0. All rights reserved.</span>
+    <span>Designed in Korea.</span>
+    <span>Crafted with light, form, and timeless simplicity.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/planner.js"></script>
+</body>
+</html>
